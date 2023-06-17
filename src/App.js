@@ -8,8 +8,9 @@ function App() {
   let [a, setA] = useState(123);
 
   let items = [
-    {}
-  ]
+    {imgL: logo, text:"1"},
+    {imgL: logo, text:"2"}
+  ];
 
   setInterval(() => {
     setA(a + 1)
@@ -18,8 +19,9 @@ function App() {
   return (
     <div className="App">
       <div className="App-header">
-        <Image imgL={logo} classN="App-logo" text='Hello World!' ></Image>
-        <Image imgL={logo} classN="App-logo" text='Hi World!' ></Image>
+        {items.map(item => <Image imgL={item.imgL} text={item.text}/>)}
+        <Image imgL={logo} text='Hello World!' ></Image>
+        <Image imgL={logo} text='Hi World!' ></Image>
         {a}
       </div>
     </div>
