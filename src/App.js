@@ -1,32 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
-import Image from './components/image';
+
+import DishList from "./components/Menu";
+import MenuOne from "./components/OneMenu";
+
+
 
 function App() {
-  
-  let [a, setA] = useState(123);
 
-  let items = [
-    {imgL: logo, text:"1"},
-    {imgL: logo, text:"2"}
+  let dish = [
+
+    {
+      name: 'buuza',
+      price: 70,
+      expense: 0,
+      ingridients: ['meat', 'water', 'solt', 'onion',],
+    },
+
+    {
+      name: 'blackSoup',
+      price: 100,
+      expense: 0,
+      ingridients: ['meat', 'water', 'solt',],
+    },
+
+    {
+      name: 'brtuch',
+      price: 150,
+      expense: 0,
+      ingridients: ['salad', 'bread', 'meat', 'sauce', 'cheese'],
+    }
   ];
 
-  setInterval(() => {
-    setA(a + 1)
-  }, 1000);
-
   return (
-    <div className="App">
-      <div className="App-header">
-        {items.map(item => <Image imgL={item.imgL} text={item.text}/>)}
-        <Image imgL={logo} text='Hello World!' ></Image>
-        <Image imgL={logo} text='Hi World!' ></Image>
-        {a}
+    <>
+      <div>Hello world!</div>
+      <div>
+        <h1>Menu</h1>
+        <MenuOne menu={dish} />
+        {dish.map((item) => (
+          <DishList item={item} />
+        ))}
+
       </div>
-    </div>
+    </>
 
   );
-}
+};
+
 
 export default App;
