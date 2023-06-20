@@ -1,49 +1,27 @@
+import { useState } from 'react';
 import './App.css';
-
-import DishList from "./components/Menu";
-import MenuOne from "./components/OneMenu";
+import Menu from './components/Menu';
 
 
 
 function App() {
+  const [cart, setCart] = useState([]);
 
-  let dish = [
-
-    {
-      name: 'buuza',
-      price: 70,
-      expense: 0,
-      ingridients: ['meat', 'water', 'solt', 'onion',],
-    },
-
-    {
-      name: 'blackSoup',
-      price: 100,
-      expense: 0,
-      ingridients: ['meat', 'water', 'solt',],
-    },
-
-    {
-      name: 'brtuch',
-      price: 150,
-      expense: 0,
-      ingridients: ['salad', 'bread', 'meat', 'sauce', 'cheese'],
-    }
-  ];
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
 
   return (
-    <>
-      <div>Hello world!</div>
-      <div>
-        <h1>Menu</h1>
-        <MenuOne menu={dish} />
-        {dish.map((item) => (
-          <DishList item={item} />
-        ))}
-
+    <div className='App p-3'>
+      <div className='container mx-auto grid justify-end p-2 rounded shadow-lg bg-slate-200'>
+        <div className='text-2xl'>Корзина</div>
+        <div>Количество: {cart.length}</div>
+        <div>Сумма: { }</div>
       </div>
-    </>
-
+      <div className='pt-3'>
+        <Menu />
+      </div>
+    </div>
   );
 };
 
